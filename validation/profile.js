@@ -1,67 +1,68 @@
 const Validator = require('validator');
 const isEmpty = require('./is-empty');
 
-module.exports = function validateProfileInput(data){
-	let errors = {};
+module.exports = function validateProfileInput(data) {
+  const errors = {};
+  const localData = {};
 
-	data.handle = !isEmpty(data.handle) ? data.handle : '';
-	data.status = !isEmpty(data.status) ? data.status : '';
-	data.skills = !isEmpty(data.skills) ? data.skills : '';
+  localData.handle = !isEmpty(data.handle) ? data.handle : '';
+  localData.status = !isEmpty(data.status) ? data.status : '';
+  localData.skills = !isEmpty(data.skills) ? data.skills : '';
 
-	if(!Validator.isLength(data.handle, { min: 2, max: 40 })){
-		errors.handle = 'handle needs to between 2 and 4 characters';
-	}
+  if (!Validator.isLength(localData.handle, { min: 2, max: 40 })) {
+    errors.handle = 'handle needs to between 2 and 4 characters';
+  }
 
-	if(Validator.isEmpty(data.handle)){
-		errors.handle = 'Handle is required';
-	}
+  if (Validator.isEmpty(localData.handle)) {
+    errors.handle = 'Handle is required';
+  }
 
-	if(Validator.isEmpty(data.status)){
-		errors.status = 'Status is required';
-	}
+  if (Validator.isEmpty(localData.status)) {
+    errors.status = 'Status is required';
+  }
 
-	if(Validator.isEmpty(data.skills)){
-		errors.skills = 'Skills is required';
-	}
+  if (Validator.isEmpty(localData.skills)) {
+    errors.skills = 'Skills is required';
+  }
 
-	if(!isEmpty(data.website)){
-		if(!Validator.isURL(data.website)){
-			errors.website = 'Not a valid URL';
-		}
-	}
+  if (!isEmpty(localData.website)) {
+    if (!Validator.isURL(localData.website)) {
+      errors.website = 'Not a valid URL';
+    }
+  }
 
-	if(!isEmpty(data.youtube)){
-		if(!Validator.isURL(data.youtube)){
-			errors.youtube = 'Not a valid URL';
-		}
-	}
+  if (!isEmpty(localData.youtube)) {
+    if (!Validator.isURL(localData.youtube)) {
+      errors.youtube = 'Not a valid URL';
+    }
+  }
 
-	if(!isEmpty(data.twitter)){
-		if(!Validator.isURL(data.twitter)){
-			errors.twitter = 'Not a valid URL';
-		}
-	}
+  if (!isEmpty(localData.twitter)) {
+    if (!Validator.isURL(localData.twitter)) {
+      errors.twitter = 'Not a valid URL';
+    }
+  }
 
-	if(!isEmpty(data.facebook)){
-		if(!Validator.isURL(data.facebook)){
-			errors.facebook = 'Not a valid URL';
-		}
-	}
+  if (!isEmpty(localData.facebook)) {
+    if (!Validator.isURL(localData.facebook)) {
+      errors.facebook = 'Not a valid URL';
+    }
+  }
 
-	if(!isEmpty(data.linkedin)){
-		if(!Validator.isURL(data.linkedin)){
-			errors.linkedin = 'Not a valid URL';
-		}
-	}
+  if (!isEmpty(localData.linkedin)) {
+    if (!Validator.isURL(localData.linkedin)) {
+      errors.linkedin = 'Not a valid URL';
+    }
+  }
 
-	if(!isEmpty(data.instagram)){
-		if(!Validator.isURL(data.instagram)){
-			errors.instagram = 'Not a valid URL';
-		}
-	}
+  if (!isEmpty(localData.instagram)) {
+    if (!Validator.isURL(localData.instagram)) {
+      errors.instagram = 'Not a valid URL';
+    }
+  }
 
-	return {
-		errors,
-		isValid: isEmpty(errors),
-	};
+  return {
+    errors,
+    isValid: isEmpty(errors),
+  };
 };
