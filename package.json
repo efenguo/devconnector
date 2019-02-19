@@ -4,17 +4,22 @@
   "description": "Social network for developers",
   "main": "server.js",
   "scripts": {
+    "client-install": "npm install --prefix client",
     "start": "node server.js",
     "server": "nodemon server.js",
     "lint": "eslint config/* models/* routes/* validation/* server.js",
     "test": "jest src",
-    "coverage": "jest --collectCoverageFrom=src/**.js --coverage src"
+    "coverage": "jest --collectCoverageFrom=src/**.js --coverage src",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Feng Guo",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
+    "eslint-config-react-app": "^3.0.7",
     "express": "^4.16.4",
     "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.4.0",
