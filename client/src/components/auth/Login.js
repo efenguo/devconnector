@@ -5,7 +5,7 @@ class Login extends Component {
   state = {
     email: '',
     password: '',
-    error: {},
+    errors: {},
   };
 
   onChange = e => {
