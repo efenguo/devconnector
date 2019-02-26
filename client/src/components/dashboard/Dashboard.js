@@ -15,14 +15,16 @@ class Dashboard extends Component {
     const { profile, loading } = this.props.profile;
 
     let dashboardContent;
-
+    console.log("check profile status=", profile);
     if(profile === null || loading) {
+      console.log("profile is null");
       dashboardContent = <Spinner />;
     } else {
       // Check if logged in user has profile data
       if(Object.keys(profile).length > 0) {
         dashboardContent = <h4>TODO: DISPLAY PROFILE</h4>
       } else {
+        console.log("fill up the content");
         // User is logged in but has no profile
         dashboardContent = (
           <div>
